@@ -13,6 +13,10 @@ int main(int argc , char **argv){
 	add_node(h , 69);
 	add_node(h , 30);
 	add_node(h , 130);
+	remove_node(h , 101);
+	remove_node(h , 130);
+	remove_node(h , 1);
+//	printf("%d\n\n\n" , h -> table[1] -> value); 
 	print_ht(h);
 	destroy_table(h);
 	return 0;

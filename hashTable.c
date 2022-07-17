@@ -58,6 +58,33 @@ bool search_node(hash_table *ht , int value) {
 }
 
 
+bool remove_node(hash_table *ht , int value){
+    int index = ht -> hash(value);
+    hash_node *current = ht -> table[index];
+    if(current -> value == value){
+        ht -> table[index] = current -> next;
+        if(ht -> table[index] != NULL)
+            ht -> table[index] -> prev = NULL;
+        free(current);
+        return true;
+    }
+    while(current -> next){
+        if(current -> value == value) {
+            current -> prev -> next = current -> next;
+            current -> next -> prev = current -> prev;
+            free(current);
+            return true;
+        }
+        current = current -> next;
+    }
+    if(current -> value == value){
+        current -> prev -> next = NULL;
+        free(current);
+    }
+    return false;
+
+}
+
 void print_ht(hash_table *ht){
     for(int i = 0; i < ht -> capacity; i++){
         if(ht -> table[i] != NULL){

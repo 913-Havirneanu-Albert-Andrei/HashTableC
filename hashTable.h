@@ -1,6 +1,10 @@
 #ifndef HASH_TABLE_H
 #define HASH_TABLE_H
-#include <stdbool.h>
+
+typedef int bool;
+#define true 1
+#define false 0
+
 
 typedef struct hash_node {
     struct hash_node *next;
@@ -24,6 +28,10 @@ void destroy_table(hash_table *ht);
 void add_node(hash_table *ht , int value);
 
 bool search_node(hash_table *ht , int value);
+
+bool remove_node(hash_table *ht , int value);
+
+void print_ht(hash_table *ht);
 
 #endif
 
