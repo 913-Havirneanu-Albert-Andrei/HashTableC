@@ -43,6 +43,7 @@ void add_node(hash_table *ht , int value){
 }
 
 
+
 bool search_node(hash_table *ht , int value) {
     bool found = false;
     int index = ht -> hash(value);
@@ -50,9 +51,23 @@ bool search_node(hash_table *ht , int value) {
     while(current && !found) {
         if(current -> value == value){
             found = true;
-            printf("DAAAA\n");
         }
         current = current -> next;
     }
     return found;
+}
+
+
+void print_ht(hash_table *ht){
+    for(int i = 0; i < ht -> capacity; i++){
+        if(ht -> table[i] != NULL){
+            printf("Position %d: " , i);
+            hash_node *current = ht -> table[i];
+            while(current != NULL){
+                printf("%d\t" , current -> value);
+                current = current -> next;
+            }
+            printf("\n");
+        }
+    }
 }
